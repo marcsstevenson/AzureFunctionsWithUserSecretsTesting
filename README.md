@@ -19,7 +19,26 @@ Add your user secrets to the project using these values:
 Note: You do not need to prefix the settings keys with "Values" but you do need to prefix the connection strings with "ConnectionStrings". 
 
 ## Testing
-Run the project and call the function with a GET request to the URL provided by the Azure Functions runtime.
+Run the project and call the HTTP endpoint with a GET request which does the following:
+
+```csharp
+public class ConfigGoGo(IConfiguration configuration)
+{
+    [Function("ConfigGoGo")]
+    public IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
+    {
+        return new OkObjectResult(new
+        {
+            Key1 = configuration["Key1"],
+            Key2 = configuration["Key2"],
+            Key3 = configuration["Key3"],
+            ConnectionString1 = configuration.GetConnectionString("ConnectionString1"),
+            ConnectionString2 = configuration.GetConnectionString("ConnectionString2"),
+            ConnectionString3 = configuration.GetConnectionString("ConnectionString3")
+        });
+    }
+}
+```
 
 Note the output from the HTTP endpoint is:
 
