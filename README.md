@@ -55,7 +55,7 @@ Note the output from the HTTP endpoint is:
 
 This demonstrates that the settings from the local.settings.json file are being used in conjunction with the user secrets and the keys can belong in either or both of the config sources.
 
-Note also that the HostBuilder in program.cs picks up the local.settings.json by convension and there is not need for:
+Note also that the HostBuilder in program.cs picks up the local.settings.json by convension and there is no need for:
 
 ```csharp
 config.AddJsonFile("local.settings.json");
