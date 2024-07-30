@@ -6,7 +6,10 @@
         "Key1": "Key1 from local.settings.json",
         "Key2": "Key2 from local.settings.json",
         "Key4": "Key4 from local.settings.json",
-        "Key5": "Key5 from local.settings.json"
+        "Key5": "Key5 from local.settings.json",
+        "MySectionName:Key4": "Key4 from local.settings.json - MySectionName",
+        "MySectionName:Key5": "Key5 from local.settings.json - MySectionName",
+        "MySectionName:Key6": "Key6 from local.settings.json - MySectionName"
     },
     "ConnectionStrings": {
         "ConnectionString1": "ConnectionString1 from local.settings.json",

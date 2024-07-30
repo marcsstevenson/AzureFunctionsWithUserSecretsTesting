@@ -15,9 +15,15 @@ var host = new HostBuilder()
         }
     })
     .ConfigureServices((hostContext, services) => {
-		var appSettings = hostContext.Configuration.GetSection("Values").Get<AppSettings>();
+        services.AddOptions<AppSettings>()
+            .Configure<IConfiguration>((settings, configuration) =>
+            {
+                configuration.GetSection("MySectionName").Bind(settings);
+            });
 
-		services.AddApplicationInsightsTelemetryWorkerService();
+        var appSettings = hostContext.Configuration.GetSection("MySectionName").Get<AppSettings>();
+
+        services.AddApplicationInsightsTelemetryWorkerService();
         services.ConfigureFunctionsApplicationInsights();
     })
     .Build();
