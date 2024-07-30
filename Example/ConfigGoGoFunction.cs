@@ -18,6 +18,8 @@ public class ConfigGoGo(IConfiguration configuration)
             Key1 = configuration["Key1"],
             Key2 = configuration["Key2"],
             Key3 = configuration["Key3"],
+            Key4 = configuration["Key4"],
+            Key5 = configuration["Key5"],
             ConnectionString1 = configuration.GetConnectionString("ConnectionString1"),
             ConnectionString2 = configuration.GetConnectionString("ConnectionString2"),
             ConnectionString3 = configuration.GetConnectionString("ConnectionString3")

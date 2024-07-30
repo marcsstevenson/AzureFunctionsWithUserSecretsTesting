@@ -1,3 +1,4 @@
+using Example;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,9 +14,10 @@ var host = new HostBuilder()
             config.AddUserSecrets<Program>();
         }
     })
-    .ConfigureServices(services =>
-    {
-        services.AddApplicationInsightsTelemetryWorkerService();
+    .ConfigureServices((hostContext, services) => {
+		var appSettings = hostContext.Configuration.GetSection("Values").Get<AppSettings>();
+
+		services.AddApplicationInsightsTelemetryWorkerService();
         services.ConfigureFunctionsApplicationInsights();
     })
     .Build();
